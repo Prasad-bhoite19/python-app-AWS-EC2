@@ -54,9 +54,10 @@ sudo apt upgrade -y
 ```
 ```bash
 🔹 2️⃣ Check Python & Pip
+```
 python3 --version
 pip --version
-
+```bash
 If pip missing:
 sudo apt install python3-pip -y
 🔹 3️⃣ Create Project Directory
