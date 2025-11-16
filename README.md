@@ -11,7 +11,6 @@ This project demonstrates how to deploy a **Python Flask Application** on an **U
 - ✔️ Virtual Environment (venv)  
 - ✔️ Gunicorn  
 - ✔️ Ubuntu / EC2  
-- ✔️ (Optional) Nginx for reverse proxy  
 
 Perfect for beginners learning cloud + backend deployment. 🎉
 
@@ -73,6 +72,8 @@ ls
 ```
 🔹 5️⃣ Edit app.py and requirements.txt
 ```
+sudo nano app.py
+sudo nano requirements.txt
 ```
 🔹 7️⃣ Install Dependencies
 ```
@@ -90,9 +91,9 @@ sudo bash myenv/bin/activate
 python3 app.py
 ```
 Open in browser:
+```
 http://YOUR_EC2_PUBLIC_IP:5000
 🔥 Production Deployment with Gunicorn
-```
 ```
 🔹 10️⃣ Run Gunicorn
 ```
@@ -100,13 +101,12 @@ gunicorn -b 0.0.0.0:5000 app:app --daemon
 Gunicorn now runs app in background.
 ```
 🎉 Deployment Completed Successfully!
-Your Flask application is now:
 
+Your Flask application is now:
 🔥 Running on EC2
 🔥 Served by Gunicorn
 🔥 (Optional) Reverse proxied via Nginx
 🔥 Fully production ready
-
 
 ## 👨‍💻 Author
 
