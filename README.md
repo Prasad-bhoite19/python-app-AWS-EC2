@@ -32,8 +32,11 @@ Perfect for beginners learning cloud + backend deployment. 🎉
 # 📁 **Project Structure**
 
 python-app/ 
+
  │── app.py 
+ 
  │── requirements.txt 
+ 
  │── myenv/ # Virtual environment
 
 ---
