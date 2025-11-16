@@ -52,7 +52,6 @@ Follow these steps **in exact order** 👇
 sudo apt update -y
 sudo apt upgrade -y
 ```
-```bash
 🔹 2️⃣ Check Python & Pip
 ```
 python3 --version
@@ -60,38 +59,45 @@ pip --version
 ```bash
 If pip missing:
 sudo apt install python3-pip -y
+```
 🔹 3️⃣ Create Project Directory
+```
 mkdir python-app
 cd python-app/
-
+```
 🔹 4️⃣ Create Required Files
+```
 touch app.py
 touch requirements.txt
 ls
-
+```
 🔹 5️⃣ Edit app.py and requirements.txt
-
+```
 🔹 7️⃣ Install Dependencies
+```
 pip install -r requirements.txt
-
+```
 🔹 8️⃣ Create Virtual Environment
+```
 sudo python3 -m venv myenv
 sudo bash myenv/bin/activate
 (Your prompt changes to)
 (myenv) ubuntu@ip-xx-xx-xx-xx
-
+```
 🔹 9️⃣ Run Flask App (Test)
+```
 python3 app.py
-
+```
 Open in browser:
 http://YOUR_EC2_PUBLIC_IP:5000
-
+```
 🔥 Production Deployment with Gunicorn
-
+```
 🔹 10️⃣ Run Gunicorn
+```
 gunicorn -b 0.0.0.0:5000 app:app --daemon
 Gunicorn now runs app in background.
-
+```
 🎉 Deployment Completed Successfully!
 Your Flask application is now:
 
