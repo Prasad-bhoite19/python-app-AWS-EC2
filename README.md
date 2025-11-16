@@ -1,172 +1,96 @@
-# 🐍 Python Web App on AWS EC2 (Ubuntu)
+# 🐍 aws-ec2-python-app
 
-Deploying a Python application on an **AWS EC2 Ubuntu server** using a **virtual environment**, running on **Port 5000**, and keeping the app alive in the **background with systemd**. Perfect for beginners learning cloud deployment ☁️🚀.
+This project demonstrates how to deploy a **Python Flask application** on an **Amazon Linux EC2 instance** using:
+
+- Python3  
+- `pip`  
+- Virtual Environment (`venv`)  
+- Gunicorn  
+- Running service on **Port 5000**
+
+This README contains **all steps extracted from your terminal commands.**
 
 ---
 
 ## 📁 Project Structure
 
 python-app/
-│── app.py
-
-│── requirements.txt
-
-│── README.md
+├── app.py
+├── requirements.txt
+└── README.md
 
 ---
 
 ## 🚀 Features
 
-- 📦 Install dependencies using **pip + virtual environment**
-- 🐧 Ubuntu-based EC2 deployment
-- ⚙️ Run Python app on **Port 5000**
-- 🔄 Keep the app running in **background** using systemd
-- ☁️ Simple & clean deployment steps
+- Run Python Flask app on **Amazon Linux**
+- Install dependencies with `pip`  
+- Use **virtual environment (venv)**  
+- Run app manually using Python  
+- Deploy using **Gunicorn**  
+- Serve on **0.0.0.0:5000**
 
 ---
 
-# 📌 1. Launch EC2 Instance
+# ⚙️ Installation & Setup (Amazon Linux)
 
-- Select **Ubuntu 22.04 / 24.04**
-- Instance Type: **t2.micro**
-- Allow inbound rules:
-  - **22** → SSH
-  - **5000** → Python App
-
-SSH into server:
-
-ssh -i your-key.pem ubuntu@EC2_PUBLIC_IP
+Below are the exact steps you used, formatted into a clean guide.
 
 ---
 
-# 📌 2. Update Server
+## 1️⃣ Check Python & pip Versions
 
-sudo apt update && sudo apt upgrade -y
+```bash
+python3 --version
+pip --version
 
----
+2️⃣ Install pip (if missing)
+sudo yum install python3-pip -y
 
-# 📌 3. Install Python Tools
+Verify:
+pip --version
 
-sudo apt install python3 python3-venv python3-pip -y
+3️⃣ Create Project Directory
+mkdir python-app
+cd python-app
 
----
+4️⃣ Create Application Files
+touch app.py
+touch requirements.txt
 
-# 📌 4. Create Project Directory
-
-mkdir ~/python-app
-cd ~/python-app
-
-Upload files:
-
-- app.py  
-- requirements.txt  
-
----
-
-# 📌 5. Create Virtual Environment
-
-python3 -m venv venv
-source venv/bin/activate
-
----
-
-# 📌 6. Install Requirements
-
+5️⃣ Install Requirements
 pip install -r requirements.txt
 
----
+6️⃣ Create Virtual Environment
+sudo python3 -m venv myenv
+Activate venv:
+sudo bash myenv/bin/activate
 
-# 📌 7. Run App Manually (Test)
+7️⃣ Test App (Manual Run)
+python3 app.py
 
-python app.py
+Visit in browser:
+http://EC2-PUBLIC-IP:5000
+Stop with CTRL+C.
 
-r
+🚀 Run App in Background (Gunicorn)
+You ran:
+gunicorn -b 0.0.0.0:5000 app:app --daemon
 
-Open in browser:
+This:
+Starts Flask app using Gunicorn
+Binds it to 0.0.0.0:5000
+Runs in background using --daemon
 
-http://EC2_PUBLIC_IP:5000
-
----
-
-# 📌 8. Run App in Background Using systemd
-
-Create service file:
-
-sudo nano /etc/systemd/system/pythonapp.service
-
-makefile
-Paste:
-
-[Unit]
-Description=Python App Service
-After=network.target
-
-[Service]
-User=ubuntu
-WorkingDirectory=/home/ubuntu/python-app
-Environment="PATH=/home/ubuntu/python-app/venv/bin"
-ExecStart=/home/ubuntu/python-app/venv/bin/python app.py
-Restart=always
-
-[Install]
-WantedBy=multi-user.target
-
-yaml
-Copy code
-
-Save & exit (CTRL+O, ENTER, CTRL+X)
-
----
-
-# 📌 9. Enable & Start Service
-
-sudo systemctl daemon-reload
-sudo systemctl enable pythonapp
-sudo systemctl start pythonapp
-sudo systemctl status pythonapp
-
-yaml
-Copy code
-
-You should see **active (running)**.
-
----
-
-# 📌 10. Allow Port 5000 (Firewall)
-
-sudo ufw allow 5000
-
-yaml
-Copy code
-
-Make sure EC2 Security Group also allows **Port 5000**.
-
----
-
-# 📌 11. Your App is Live 🎉
-
-Visit:
-
-http://EC2_PUBLIC_IP:5000
-
----
-
-```python
 🔧 Useful Commands
-sudo systemctl restart pythonapp
-Stop service
-sudo systemctl stop pythonapp
-View logs
-powershell
-Copy code
-sudo journalctl -u pythonapp -f
-🎉 Deployment Complete!
-Your Python app is now:
+Stop Gunicorn Process
+Check Running Processes
+ps aux | grep gunicorn
 
-✔ Running on EC2
-✔ Using Virtual Environment
-✔ Running on Port 5000
-✔ Always running in background
-✔ Ready for production
-✔ Ready for GitHub 🚀
+🎯 Next Improvements
+Add systemd service for auto-start
+Add Nginx reverse proxy on port 80
+Deploy with SSL/HTTPS
+Add logging and monitoring
 
+✍️ Author: Prasad
