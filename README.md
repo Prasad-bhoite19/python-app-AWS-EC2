@@ -51,6 +51,8 @@ Follow these steps **in exact order** 👇
 ```bash
 sudo apt update -y
 sudo apt upgrade -y
+```
+```bash
 🔹 2️⃣ Check Python & Pip
 python3 --version
 pip --version
