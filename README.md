@@ -131,6 +131,13 @@ Your Flask application is now:
 
 ## 📸 Screenshots :-
 
+| Screenshot Name | Description |
+|-----------------|-------------|
+| Inbound Rules.png | Screenshot showing EC2 security group inbound rules |
+| Output.png | Screenshot of Flask app output in the browser |
+| Runing Python-App.png | Screenshot showing the running Python Flask app on EC2 |
+| Server.png | Screenshot of the EC2 terminal/server setup |
+
 Store screenshots in Images/ folder.
 
 ## 📊 Benefits of This Setup :-
