@@ -41,7 +41,7 @@ Perfect for beginners learning cloud + backend deployment. 🎉
 
 ---
 
-# 📁 **Project Structure** :-
+## 📁 **Project Structure** :-
 
 python-app/ 
 
@@ -55,13 +55,13 @@ python-app/
 
 ---
 
-# 🛠️ **Complete Setup Steps (Ubuntu EC2)** :-
+## 🛠️ **Complete Setup Steps (Ubuntu EC2)** :-
 
 Follow these steps **in exact order** 👇
 
 ---
 
-## 🔹 1️⃣ Update Server** :-
+🔹 1️⃣ Update Server :-
 ```bash
 sudo apt update -y
 sudo apt upgrade -y
@@ -71,7 +71,7 @@ sudo apt upgrade -y
 python3 --version
 pip --version
 ```
-If pip missing:
+***If pip missing:***
 ```
 sudo apt install python3-pip -y
 ```
@@ -106,20 +106,23 @@ sudo bash myenv/bin/activate
 ```
 python3 app.py
 ```
-Open in browser:
+***Open in browser:
+
 http://YOUR_EC2_PUBLIC_IP:5000
-🔥 Production Deployment with Gunicorn
+
+🔥 Production Deployment with Gunicorn***
 
 🔹 10️⃣ Run Gunicorn :-
 ```
 gunicorn -b 0.0.0.0:5000 app:app --daemon
 ```
-Gunicorn now runs app in background.
+***Gunicorn now runs app in background.***
 
 ---
 
-🎉 Deployment Completed Successfully!
+***🎉 Deployment Completed Successfully!***
 
+---
 Your Flask application is now:
 
 - 🔥 Running on EC2
